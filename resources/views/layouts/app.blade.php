@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Isi title yang kita kirimkan dari views lain-->
+   <title>@yield('title')</title>
+   <!--link bootstrap-->
+   @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body>
+
+<div class="container">
+     
+    <!--isi konten yang kirimkan dari views lain-->
+    @yield('content')
+
+</div>
+    
+</body>
+</html>
