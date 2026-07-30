@@ -8,7 +8,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route
+                     ('dashboard') }}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" {{ Request::is('admin/users') ? 'active' : '' }} href="{{ route('admin.users') }}">Users</a>
                 </li>
                 <form class="position-absolute top-50 start-100 translate-middle" action="{{ route('logout') }}"
                     method="POST">
