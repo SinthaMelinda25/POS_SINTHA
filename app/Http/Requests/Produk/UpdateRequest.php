@@ -5,7 +5,7 @@ namespace App\Http\Requests\Produk;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,6 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
-
         return [
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'name' => 'required|string|max:255',
@@ -32,6 +31,7 @@ class StoreRequest extends FormRequest
             
         ];
     }
+
     public function messages():array
     {
         return [
