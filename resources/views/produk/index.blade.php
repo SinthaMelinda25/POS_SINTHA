@@ -9,7 +9,7 @@
 <h1>Halaman Produk</h1>
 
 @can('create', App\Models\Produk::class)
-<a href="{{ route('produk.create')}}" method="GET" class="btn btn-primary mb-3">create</a>
+<a href="{{ route('produk.create')}}" method="GET" class="btn btn-primary mb-3">Create</a>
 @endcan
 
 <form action="{{ route('produk.index') }}" method="GET" class="mb-3">
@@ -27,7 +27,7 @@
     </div>
 </form>
 
-<table class="table">
+<table class="table align-middle"> <!-- Ditambahkan align-middle agar semua baris sejajar vertikal di tengah -->
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -54,29 +54,36 @@
       <td>{{ $product->harga_beli }}</td>
       <td>{{ $product->harga_jual }}</td>
       <td>{{ $product->stok }}</td>
-      <td class="d-flex gap-1">
-        @can('update', $product)
-        <a href="{{ route('produk.edit' , $product) }}"  class="btn btn-warning">Edit</a>
-        @endcan
-        ||
-        @can('delete', $product)
-        <form action="{{ route('produk.destroy', $product) }}" method="POST" class="d-inline">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus user ini?')">
-                Hapus
-            </button> 
-        </form>
-      @endcan
-    </td>
+      
+      <!-- PERBAIKAN DI SINI: Menghapus d-flex dari td dan memindahkannya ke div bungkus -->
+      <td>
+        <div class="d-flex align-items-center gap-1">
+          @can('update', $product)
+            <a href="{{ route('produk.edit' , $product) }}" class="btn btn-warning">Edit</a>
+          @endcan
+          
+          <span class="text-muted">||</span> <!-- Membungkus garis pemisah agar rapi -->
+          
+          @can('delete', $product)
+            <form action="{{ route('produk.destroy', $product) }}" method="POST" class="d-inline m-0">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus user ini?')">
+                    Hapus
+                </button> 
+            </form>
+          @endcan
+        </div>
+      </td>
     </tr>
     @empty
     <tr>
-        <td colspan=8><h1>Data tidak tersedia</h1></td>
+        <td colspan="8" class="text-center"><h1>Data tidak tersedia</h1></td>
     </tr>
     @endforelse
   </tbody>
 </table>
+
 {{ $products->links() }}
 
 @endsection

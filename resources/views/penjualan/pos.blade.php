@@ -35,7 +35,7 @@
             @foreach($products as $product)
                 <form method="POST" action="{{ route('itempenjualan.store') }}" class="row mb-2">
                     @csrf
-                    <input type="hidden" name="product_id" value="">
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
 
                     <div class="col-7">
                         <button class="btn btn-outline-primary w-100 text-start p-2 {{ $sale->status ===
@@ -43,7 +43,7 @@
                             <div class="d-flex align-item-center gap-2">
 
                                 {{-- Gambar produk --}}
-                                <img src="{{ asset('storage/'. $product->foto) }}"
+                                <img src="{{ asset('storage/'.$product->foto) }}"
                                      alt="Gambar"
                                      class="rounded-circle"
                                      style="width: 45px; height: 45px; object-fit:cover;">
@@ -79,6 +79,7 @@
             <thead>
                 <tr>
                     <th>Produk</th>
+                    <th>Harga</th>
                     <th>Qty</th>
                     <th>Subtotal</th>
                     <th>Aksi</th>
@@ -88,70 +89,66 @@
                 @forelse($sale->itemPenjualan as $item)
                 <tr>
                     <td>{{ $item->produk->nama }}</td>
-                    <td>
-                        <form method="" action="">
-                            @csrf @method('PUT')
-                            <input type="number" name="quantity"
-                                    value="{{ $item->kuantitas }}"
-                                    class="form-control form-control-sm">
-                        </form>
-                    </td>
-                    <td>Rp {{ number_format($item->subtotal) }}</td>
+                        <td>Rp {{ number_format($item->produk->harga_jual) }}</td>
+                        <td>
+                             <form method="POST" action="{{ route('itempenjualan.update', $item->id) }}">
+                                     @csrf @method('PUT')
+                                         <input type="number" name="quantity"
+                                          value="{{ $item->kuantitas }}"
+                                          class="form-control form-control-sm">
+                             </form>
+                        </td>
+                        <td>Rp {{ number_format($item->subtotal) }}</td>
+                        <td>
+                            @can('delete', $item)
+                            <form method="POST" action="{{ route('itempenjualan.destroy', $item->id) }}">
+                                 @csrf @method('DELETE')
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </form>
+                            @endcan
+                        </td>
                 </tr>
+                @empty
+                 <tr>
+                    <td colspan="4" class="text-center text-muted">
+                    Keranjang Kosong
+                    </td>
+            
+                </tr>
+                    @endforelse
             </tbody>
-            <tr>
-                <td>coki-coki</td>
-                <td>
-                    <form method="" action="">
-                        @csrf @method('PUT')
-                        <input type="number" name="quantity"
-                                value=""
-                                class="form-control form-control-sm">
-                    </form>
-                </td>
-                <td>Rp. 20.000</td>
-                <td>
-                    <form method="" action="">
-                        @csrf @method('DELETE')
-                        <button class="btn btn-danger btn-sm">Hapus</button>
-                    </form>
-                </td>
-            </tr>
-            @empty
-            <tr>
-                <td colspan="4" class="text-center text-muted">
-                    Keranjang Kosing
-                </td>
-            </tr>
-            @endforelse
-        </tbody>
         </table>
 
 
          <div class="card-footer">
             <strong>Rp {{ number_format($sale->total_pembayaran) }}</strong>
 
-            <form method="" action="" class="mt-2">
+            <form method="POST" 
+                 action="{{ route('penjualan.update', $sale->id) }}" 
+                 onsubmit="return confirm('Yakin ingin checkout?')" class="mt-2">
                 @csrf
+                @method('PUT')
                 <select name="payment_method" class="form-select mb-2">
                     <option value="">Pilih Pembayaran</option>
                     <option value="CASH">Cash</option>
-                    <option value="QRIS">Qris</option>
+                    <option value="QRIS">QRIS</option>
                 </select>
 
-                <button class="btn btn-success w-100">
+                <button class="btn btn-success w-100 {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}">
                     Checkout
                 </button>
              </form>
-             <form method=""
-                action=""
-                class="mt-2">
+            @can('delete', $sale)
+            <form action="{{ route('penjualan.destroy', $sale->id) }}"
+                  method="POST"
+                 onsubmit="return confirm('Yakin ingin membatalkan transaksi?')">
              @csrf
-            @method('DELETE')
-            <button class="btn btn-outline-danger w-100">
-                Batal Transaksi
-            </button>
-        </form>
+             @method('DELETE')
+                <button class="btn btn-outline-danger w-100 mt-2 {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}">
+                     Batalkan Transaksi
+                </button>
+            </form>
+            @endcan
         </div>
     </div>
 </div>

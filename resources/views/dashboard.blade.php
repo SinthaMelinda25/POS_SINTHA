@@ -165,10 +165,5 @@
                 </div>
             </div>
 
-
-
-
-
-
     <!-- batas akhir isi konten -->
 @endsection
