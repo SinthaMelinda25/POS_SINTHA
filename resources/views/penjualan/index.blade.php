@@ -12,7 +12,7 @@
 </div>
 @endif
 
-<h1>Halaman Penjualan</h1>
+<h1>Penjualan</h1>
 
 <a href="{{ route('penjualan.create') }}" class="btn btn-primary mb-3">Create</a>
 

@@ -6,7 +6,7 @@
 
 @include('layouts.navbar')
 
-<h1>Halaman Produk</h1>
+<h1>Produk</h1>
 
 @can('create', App\Models\Produk::class)
 <a href="{{ route('produk.create')}}" method="GET" class="btn btn-primary mb-3">Create</a>
