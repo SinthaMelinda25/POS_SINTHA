@@ -4,15 +4,168 @@
 
 @section('content')
 
+<style>
+    :root {
+        --green-darkest: #33623c;
+        --green-primary:  #4f8a5b;
+        --green-primary-hover: #3f7049;
+        --green-soft:     #9fc7a8;
+        --green-pale:     #eef5ef;
+    }
+
+    .page-heading-produk {
+        font-weight: 800;
+        color: var(--green-darkest);
+        margin: 1.8rem 0 1.2rem;
+    }
+
+    .btn-create-produk {
+        background-color: var(--green-primary);
+        border-color: var(--green-primary);
+        color: #fff;
+        font-weight: 500;
+        border-radius: 8px;
+        padding: .5rem 1.2rem;
+    }
+
+    .btn-create-produk:hover {
+        background-color: var(--green-primary-hover);
+        border-color: var(--green-primary-hover);
+        color: #fff;
+    }
+
+    .search-form-produk .form-control {
+        border: 1px solid var(--green-soft);
+        border-radius: 8px 0 0 8px;
+        padding: .55rem .9rem;
+    }
+
+    .search-form-produk .form-control:focus {
+        border-color: var(--green-primary);
+        box-shadow: 0 0 0 .2rem rgba(79, 138, 91, .2);
+    }
+
+    .search-form-produk .btn-outline-secondary {
+        border: 1px solid var(--green-soft);
+        border-left: none;
+        color: var(--green-darkest);
+        border-radius: 0 8px 8px 0;
+        font-weight: 500;
+    }
+
+    .search-form-produk .btn-outline-secondary:hover {
+        background-color: var(--green-primary);
+        border-color: var(--green-primary);
+        color: #fff;
+    }
+
+    .table-card-produk {
+        background-color: #fff;
+        border: 1px solid var(--green-soft);
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(51, 98, 60, 0.08);
+        padding: .75rem 1rem .25rem;
+        margin-bottom: 1rem;
+        overflow-x: auto;
+    }
+
+    .green-table-produk thead th {
+        background-color: var(--green-primary);
+        color: #fff;
+        border: none;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .green-table-produk thead tr th:first-child {
+        border-top-left-radius: 8px;
+    }
+
+    .green-table-produk thead tr th:last-child {
+        border-top-right-radius: 8px;
+    }
+
+    .green-table-produk tbody tr:hover {
+        background-color: var(--green-pale);
+    }
+
+    .green-table-produk tbody td,
+    .green-table-produk tbody th {
+        border-color: #e3ece4;
+    }
+
+    .green-table-produk .img-thumbnail {
+        border: 1px solid var(--green-soft);
+        border-radius: 8px;
+    }
+
+    .harga-jual {
+        color: var(--green-darkest);
+        font-weight: 600;
+    }
+
+    .stok-badge {
+        background-color: var(--green-pale);
+        color: var(--green-darkest);
+        font-weight: 600;
+        font-size: .78rem;
+        padding: .3rem .7rem;
+        border-radius: 999px;
+        display: inline-block;
+    }
+
+    .btn-edit-produk {
+        background-color: #d9a441;
+        border-color: #d9a441;
+        color: #fff;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+
+    .btn-edit-produk:hover {
+        background-color: #c08f34;
+        border-color: #c08f34;
+        color: #fff;
+    }
+
+    .btn-delete-produk {
+        background-color: #c0463f;
+        border-color: #c0463f;
+        color: #fff;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+
+    .btn-delete-produk:hover {
+        background-color: #a53a34;
+        border-color: #a53a34;
+        color: #fff;
+    }
+
+    .aksi-separator-produk {
+        color: var(--green-soft);
+    }
+
+    .green-table-produk .pagination .page-link {
+        color: var(--green-primary);
+        border-color: var(--green-soft);
+    }
+
+    .green-table-produk .pagination .page-item.active .page-link {
+        background-color: var(--green-primary);
+        border-color: var(--green-primary);
+    }
+</style>
+
 @include('layouts.navbar')
 
-<h1>Produk</h1>
+<h1 class="page-heading-produk">Produk</h1>
 
 @can('create', App\Models\Produk::class)
-<a href="{{ route('produk.create')}}" method="GET" class="btn btn-primary mb-3">Create</a>
+<a href="{{ route('produk.create')}}" method="GET" class="btn btn-create-produk mb-3">Create</a>
 @endcan
 
-<form action="{{ route('produk.index') }}" method="GET" class="mb-3">
+<form action="{{ route('produk.index') }}" method="GET" class="mb-3 search-form-produk">
     <div class="input-group">
         <input 
             type="text"
@@ -27,7 +180,8 @@
     </div>
 </form>
 
-<table class="table align-middle"> <!-- Ditambahkan align-middle agar semua baris sejajar vertikal di tengah -->
+<div class="table-card-produk">
+<table class="table align-middle green-table-produk"> <!-- Ditambahkan align-middle agar semua baris sejajar vertikal di tengah -->
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -52,23 +206,23 @@
       </td>
       <td>{{ $product->nama }}</td>
       <td>{{ $product->harga_beli }}</td>
-      <td>{{ $product->harga_jual }}</td>
-      <td>{{ $product->stok }}</td>
+      <td class="harga-jual">{{ $product->harga_jual }}</td>
+      <td><span class="stok-badge">{{ $product->stok }}</span></td>
       
       <!-- PERBAIKAN DI SINI: Menghapus d-flex dari td dan memindahkannya ke div bungkus -->
       <td>
         <div class="d-flex align-items-center gap-1">
           @can('update', $product)
-            <a href="{{ route('produk.edit' , $product) }}" class="btn btn-warning">Edit</a>
+            <a href="{{ route('produk.edit' , $product) }}" class="btn btn-edit-produk">Edit</a>
           @endcan
           
-          <span class="text-muted">||</span> <!-- Membungkus garis pemisah agar rapi -->
+          <span class="aksi-separator-produk">||</span> <!-- Membungkus garis pemisah agar rapi -->
           
           @can('delete', $product)
             <form action="{{ route('produk.destroy', $product) }}" method="POST" class="d-inline m-0">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus user ini?')">
+                <button class="btn btn-delete-produk" onclick="return confirm('Apakah anda yakin akan menghapus user ini?')">
                     Hapus
                 </button> 
             </form>
@@ -83,6 +237,7 @@
     @endforelse
   </tbody>
 </table>
+</div>
 
 {{ $products->links() }}
 
