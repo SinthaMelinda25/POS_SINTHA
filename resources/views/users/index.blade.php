@@ -2,6 +2,8 @@
 
 @section('title', 'Users')
 
+@include('layouts.navbar')
+
 @section('content')
 
 <style>
@@ -147,9 +149,8 @@
     }
 </style>
 
-@include('layouts.navbar')
 
-<h1 class="page-heading-users">Halaman Users</h1>
+<h1 class="page-heading-users">Users</h1>
 <a href="{{ route('admin.users.create') }}" class="btn btn-create mb-3">Create</a>
 
 <form action="{{ route('admin.users') }}" method="GET" class="mb-3 search-form-users">
@@ -159,7 +160,7 @@
             name="search"
             value="{{ request('search') }}"
             class="form-control"
-            placeholder="Search usernaeme or email"
+            placeholder="Search username or email"
         >
         <button class="btn btn-outline-secondary" type="submit">
             Search
@@ -171,7 +172,7 @@
 <table class="table green-table-users">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">No</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Role</th>
@@ -187,7 +188,7 @@
         <td><span class="role-badge">{{ $user->role->name }}</span></td>
         <td>
             <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-sm btn-edit-user">
-                Edit Akun
+                Edit
             </a>
            <span class="aksi-separator">||</span>
            <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="d-inline">

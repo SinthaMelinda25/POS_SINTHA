@@ -4,6 +4,8 @@
 <!-- mengirimkan nilai ke title untuk ditampilkan -->
 @section('title', 'login')
 
+@include('layouts.navbar')
+
 <!-- batas awal isi konten -->
 @section('content')
 
@@ -126,7 +128,7 @@
     }
 </style>
 
-    @include('layouts.navbar')
+    
 
     <div class="text-center">
         <h1 class="page-heading">
@@ -197,7 +199,7 @@
                <table class="table green-table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Stok</th>
                         </tr>
@@ -227,7 +229,7 @@
                         <table class="table green-table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Stok</th>
                         </tr>

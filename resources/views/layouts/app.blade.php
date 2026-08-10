@@ -11,15 +11,19 @@
 
 <body>
 
-    <div class="container">
+    <!-- 1. Letakkan komponen Navbar di sini jika ingin dipisahkan global -->
+    @yield('navbar') 
 
+    <div class="container mt-3">
+
+        <!-- 2. Taruh pemberitahuan sukses di sini (Sekarang posisinya di bawah navbar) -->
         @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success mb-3">
                 {{ session('success') }}
             </div>
         @endif
 
-        <!-- isi konten yang kita kirimkan dari views lain-->
+        <!-- 3. Isi konten halaman utama seperti tabel dan tombol -->
         @yield('content')
 
     </div>

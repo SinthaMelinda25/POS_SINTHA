@@ -16,19 +16,19 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index(SearchRequest $request)
-    {
-        $keyword = $request->input('search');
+{
+    $keyword = $request->input('search');
 
-        if($keyword) {
-            $users = User::whereRaw("MATCH(name, email) AGAINST(? IN BOOLEAN MODE)", [$keyword])
-            ->paginate(10)
-            ->withQueryString();
-        } else {
-            $users = User::latest()->paginate(10)->withQueryString();
-        }
-        
-        return view('users.index', compact('users'));
-    }
+    $users = User::when($keyword, function ($query, $keyword) {
+            $query->where('name', 'like', "%{$keyword}%")
+                  ->orWhere('email', 'like', "%{$keyword}%");
+        })
+        ->latest()
+        ->paginate(10)
+        ->withQueryString();
+
+    return view('users.index', compact('users'));
+}
 
     /**
      * Show the form for creating a new resource.

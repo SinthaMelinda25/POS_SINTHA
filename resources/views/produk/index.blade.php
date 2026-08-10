@@ -2,6 +2,8 @@
 
 @section('title', 'Produk')
 
+@include('layouts.navbar')
+
 @section('content')
 
 <style>
@@ -157,7 +159,7 @@
     }
 </style>
 
-@include('layouts.navbar')
+
 
 <h1 class="page-heading-produk">Produk</h1>
 
@@ -184,7 +186,7 @@
 <table class="table align-middle green-table-produk"> <!-- Ditambahkan align-middle agar semua baris sejajar vertikal di tengah -->
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">No</th>
       <th scope="col">User</th>
       <th scope="col">Foto</th>
       <th scope="col">Nama</th>
