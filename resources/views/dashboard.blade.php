@@ -158,7 +158,7 @@
                         Jumlah Transaksi Hari Ini
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Rp {{ $ringkasan['total_transaksi'] }}</h5>
+                        <h5 class="card-title"> {{ $ringkasan['total_transaksi'] }}</h5>
                     </div>
                 </div>
             </div>

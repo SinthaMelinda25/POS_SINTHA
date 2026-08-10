@@ -117,33 +117,30 @@
     }
 
     .btn-edit-produk {
-        background-color: #d9a441;
-        border-color: #d9a441;
-        color: #fff;
-        border-radius: 6px;
-        font-weight: 500;
-    }
+    background-color: transparent;
+    border: 1.5px solid #d9a441;
+    color: #d9a441;
+    border-radius: 6px;
+    font-weight: 500;
+}
 
-    .btn-edit-produk:hover {
-        background-color: #c08f34;
-        border-color: #c08f34;
-        color: #fff;
-    }
+.btn-edit-produk:hover {
+    background-color: #d9a441;
+    color: #fff;
+}
 
-    .btn-delete-produk {
-        background-color: #c0463f;
-        border-color: #c0463f;
-        color: #fff;
-        border-radius: 6px;
-        font-weight: 500;
-    }
+.btn-delete-produk {
+    background-color: transparent;
+    border: 1.5px solid #c0463f;
+    color: #c0463f;
+    border-radius: 6px;
+    font-weight: 500;
+}
 
-    .btn-delete-produk:hover {
-        background-color: #a53a34;
-        border-color: #a53a34;
-        color: #fff;
-    }
-
+.btn-delete-produk:hover {
+    background-color: #c0463f;
+    color: #fff;
+}
     .aksi-separator-produk {
         color: var(--green-soft);
     }

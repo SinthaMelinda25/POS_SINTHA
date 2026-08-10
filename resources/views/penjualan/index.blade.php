@@ -137,48 +137,50 @@
         color: #b3392f;
     }
 
-    .btn-detail-penjualan {
-        background-color: var(--green-primary);
-        border-color: var(--green-primary);
-        color: #fff;
-        border-radius: 6px;
-        font-weight: 500;
-    }
+   .btn-detail-penjualan {
+    background-color: transparent;
+    border: 1.5px solid var(--green-primary);
+    color: var(--green-primary);
+    border-radius: 6px;
+    font-weight: 500;
+}
 
-    .btn-detail-penjualan:hover {
-        background-color: var(--green-primary-hover);
-        border-color: var(--green-primary-hover);
-        color: #fff;
-    }
+.btn-detail-penjualan:hover {
+    background-color: var(--green-primary);
+    color: #fff;
+}
 
-    .btn-edit-penjualan {
-        background-color: #d9a441;
-        border-color: #d9a441;
-        color: #fff;
-        border-radius: 6px;
-        font-weight: 500;
-    }
+.btn-edit-penjualan {
+    background-color: transparent;
+    border: 1.5px solid #d9a441;
+    color: #d9a441;
+    border-radius: 6px;
+    font-weight: 500;
+}
 
-    .btn-edit-penjualan:hover {
-        background-color: #c08f34;
-        border-color: #c08f34;
-        color: #fff;
-    }
+.btn-edit-penjualan:hover {
+    background-color: #d9a441;
+    color: #fff;
+}
 
-    .btn-delete-penjualan {
-        background-color: #c0463f;
-        border-color: #c0463f;
-        color: #fff;
-        border-radius: 6px;
-        font-weight: 500;
-    }
+.btn-delete-penjualan {
+    background-color: transparent;
+    border: 1.5px solid #c0463f;
+    color: #c0463f;
+    border-radius: 6px;
+    font-weight: 500;
+}
 
-    .btn-delete-penjualan:hover {
-        background-color: #a53a34;
-        border-color: #a53a34;
-        color: #fff;
-    }
+.btn-delete-penjualan:hover {
+    background-color: #c0463f;
+    color: #fff;
+}
 
+.green-table-penjualan td form {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+}
     .aksi-separator-penjualan {
         color: var(--green-soft);
     }
@@ -242,7 +244,7 @@
       <td class="total-bayar">Rp.{{ number_format($sale->total_pembayaran) }}</td>
       <td><span class="metode-badge">{{ $sale->metode_pembayaran }}</span></td>
       <td><span class="status-badge status-{{ strtolower($sale->status) }}">{{ $sale->status }}</span></td>
-    <td class="d-flex gap-1">
+    <td class="d-flex align-items-center gap-1">
         <a href="" class="btn btn-detail-penjualan">Detail</a>
         @can('view', $sale)
         <span class="aksi-separator-penjualan">||</span>

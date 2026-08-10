@@ -40,6 +40,8 @@
         background-color: var(--green-pale);
     }
 
+    
+
     .login-card .form-label {
         color: var(--green-darkest);
         font-weight: 500;
