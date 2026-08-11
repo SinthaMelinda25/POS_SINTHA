@@ -106,30 +106,32 @@
     }
 
     .btn-edit-user {
-    background-color: transparent;
-    border: 1.5px solid #d9a441;
-    color: #d9a441;
-    border-radius: 6px;
-    font-weight: 500;
-}
+        background-color: transparent;
+        border: 1.5px solid #d9a441;
+        color: #d9a441;
+        border-radius: 6px;
+        font-weight: 500;
 
-.btn-edit-user:hover {
-    background-color: #d9a441;
-    color: #fff;
-}
+    }
 
-.btn-delete-user {
-    background-color: transparent;
-    border: 1.5px solid #c0463f;
-    color: #c0463f;
-    border-radius: 6px;
-    font-weight: 500;
-}
+    .btn-edit-user:hover {
+        background-color: #d9a441;
+        color: #fff;
+    }
 
-.btn-delete-user:hover {
-    background-color: #c0463f;
-    color: #fff;
-}
+    .btn-delete-user {
+        background-color: transparent;
+        border: 1.5px solid #a85751;
+        color: #a85751;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+
+    .btn-delete-user:hover {
+        background-color: #a85751;
+        color: #fff;
+    }
+
     .aksi-separator {
         color: var(--green-soft);
         margin: 0 4px;

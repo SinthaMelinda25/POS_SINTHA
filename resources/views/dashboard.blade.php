@@ -148,7 +148,7 @@
                         Total Nilai Penjualan Hari ini
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Rp {{ number_format($ringkasan['total_penjualan']) }}</h5>
+                        <h5 class="card-title">Rp{{ number_format($ringkasan['total_penjualan'], 0, ',', '.') }}</h5>
                     </div>
                 </div>
             </div>
@@ -173,7 +173,7 @@
                         Total pembayaran tunai
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Rp {{ number_format($ringkasan['total_cash']) }}</h5>
+                        <h5 class="card-title">Rp{{ number_format($ringkasan['total_cash'], 0, ',', '.') }}</h5>
                     </div>
                 </div>
             </div>
@@ -183,7 +183,7 @@
                         Total pembayaran non_tunai
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Rp {{ number_format($ringkasan['total_non_tunai']) }}</h5>
+                        <h5 class="card-title">Rp{{ number_format($ringkasan['total_non_tunai'], 0, ',', '.') }}</h5>
                     </div>
                 </div>
             </div>

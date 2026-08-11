@@ -241,7 +241,7 @@
       <th scope="row">{{ $sales->firstItem() + $loop->index }}</th>
       <td>{{ $sale->created_at->translatedFormat('d-m-Y H:i:s') }}</td>
       <td>{{ $sale->user->name }}</td>
-      <td class="total-bayar">Rp.{{ number_format($sale->total_pembayaran) }}</td>
+      <td class="total-bayar">Rp{{ number_format($sale->total_pembayaran, 0, ',', '.') }}</td>
       <td><span class="metode-badge">{{ $sale->metode_pembayaran }}</span></td>
       <td><span class="status-badge status-{{ strtolower($sale->status) }}">{{ $sale->status }}</span></td>
     <td class="d-flex align-items-center gap-1">

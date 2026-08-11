@@ -26,11 +26,11 @@
     }
 
     .navbar-pos .navbar-brand {
-        color: var(--green-darkest);
-        font-weight: 800;
-        font-size: 1.35rem;
-        letter-spacing: .5px;
-    }
+    color: #204a29;
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: .5px;
+}
 
     .navbar-pos .navbar-nav {
         align-items: center;

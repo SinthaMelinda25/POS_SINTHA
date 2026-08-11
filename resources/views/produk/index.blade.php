@@ -117,30 +117,31 @@
     }
 
     .btn-edit-produk {
-    background-color: transparent;
-    border: 1.5px solid #d9a441;
-    color: #d9a441;
-    border-radius: 6px;
-    font-weight: 500;
-}
+        background-color: transparent;
+        border: 1.5px solid #d9a441;
+        color: #d9a441;
+        border-radius: 6px;
+        font-weight: 500;
+    }
 
-.btn-edit-produk:hover {
-    background-color: #d9a441;
-    color: #fff;
-}
+    .btn-edit-produk:hover {
+        background-color: #d9a441;
+        color: #fff;
+    }
 
-.btn-delete-produk {
-    background-color: transparent;
-    border: 1.5px solid #c0463f;
-    color: #c0463f;
-    border-radius: 6px;
-    font-weight: 500;
-}
+    .btn-delete-produk {
+        background-color: transparent;
+        border: 1.5px solid #a85751;
+        color: #a85751;
+        border-radius: 6px;
+        font-weight: 500;
+    }
 
-.btn-delete-produk:hover {
-    background-color: #c0463f;
-    color: #fff;
-}
+    .btn-delete-produk:hover {
+        background-color: #a85751;
+        color: #fff;
+    }
+
     .aksi-separator-produk {
         color: var(--green-soft);
     }
@@ -204,8 +205,8 @@
                   class="img-thumbnail">
       </td>
       <td>{{ $product->nama }}</td>
-      <td>Rp {{ number_format($product->harga_beli, 0, ',', '.') }}</td>
-      <td class="harga-jual">Rp {{ number_format($product->harga_jual, 0, ',', '.') }}</td>
+      <td>Rp{{ number_format($product->harga_beli, 0, ',', '.') }}</td>
+        <td class="harga-jual">Rp{{ number_format($product->harga_jual, 0, ',', '.') }}</td>
       <td><span class="stok-badge">{{ $product->stok }}</span></td>
       
       <!-- PERBAIKAN DI SINI: Menghapus d-flex dari td dan memindahkannya ke div bungkus -->
