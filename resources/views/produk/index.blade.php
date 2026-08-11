@@ -204,8 +204,8 @@
                   class="img-thumbnail">
       </td>
       <td>{{ $product->nama }}</td>
-      <td>{{ $product->harga_beli }}</td>
-      <td class="harga-jual">{{ $product->harga_jual }}</td>
+      <td>Rp {{ number_format($product->harga_beli, 0, ',', '.') }}</td>
+      <td class="harga-jual">Rp {{ number_format($product->harga_jual, 0, ',', '.') }}</td>
       <td><span class="stok-badge">{{ $product->stok }}</span></td>
       
       <!-- PERBAIKAN DI SINI: Menghapus d-flex dari td dan memindahkannya ke div bungkus -->
