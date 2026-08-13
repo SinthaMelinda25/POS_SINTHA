@@ -215,6 +215,7 @@
             value="{{ request()->search }}"
             class="form-control"
             placeholder="Search kasir"
+            autocomplete="off"
         >
         <button class="btn btn-outline-secondary" type="submit">
             Search
@@ -245,7 +246,7 @@
       <td><span class="metode-badge">{{ $sale->metode_pembayaran }}</span></td>
       <td><span class="status-badge status-{{ strtolower($sale->status) }}">{{ $sale->status }}</span></td>
     <td class="d-flex align-items-center gap-1">
-        <a href="" class="btn btn-detail-penjualan">Detail</a>
+       <a href="{{ route('penjualan.show', $sale) }}" class="btn btn-detail-penjualan">Detail</a>
         @can('view', $sale)
         <span class="aksi-separator-penjualan">||</span>
         <a href="{{ route('penjualan.edit', $sale) }}" class="btn btn-edit-penjualan">Edit</a>

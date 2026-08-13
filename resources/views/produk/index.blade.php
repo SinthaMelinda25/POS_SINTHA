@@ -173,6 +173,7 @@
             value=""
             class="form-control"
             placeholder="Search nama produk"
+            autocomplete="off"
         >
         <button class="btn btn-outline-secondary" type="submit">
             Search

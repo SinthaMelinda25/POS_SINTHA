@@ -160,6 +160,7 @@
             value="{{ request('search') }}"
             class="form-control"
             placeholder="Search username or email"
+            autocomplete="off"
         >
         <button class="btn btn-outline-secondary" type="submit">
             Search
