@@ -170,7 +170,7 @@
             <div class="col-md-6">
                 <div class="card summary-card">
                     <div class="card-header">
-                        Total pembayaran tunai
+                        Total Pembayaran Tunai
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Rp{{ number_format($ringkasan['total_cash'], 0, ',', '.') }}</h5>
@@ -180,7 +180,7 @@
             <div class="col-md-6">
                 <div class="card summary-card">
                     <div class="card-header">
-                        Total pembayaran non_tunai
+                        Total Pembayaran Non-Tunai
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Rp{{ number_format($ringkasan['total_non_tunai'], 0, ',', '.') }}</h5>
@@ -194,7 +194,7 @@
                 <h1 class="section-title">Critical Inventory Status</h1>
             </div>
             <div class="col-md-6">
-                <h3 class="subsection-title">Daftar produk stok rendah</h3>
+                <h3 class="subsection-title">Daftar Produk Stok Rendah</h3>
                 <div class="table-card">
                <table class="table green-table">
                     <thead>
@@ -224,7 +224,7 @@
                     {{ $produkStokRendah->links()}}
                     </div>
                     <div class="col-md-6">
-                        <h3 class="subsection-title">Produk habis stok</h3>
+                        <h3 class="subsection-title">Produk Habis Stok</h3>
                         <div class="table-card">
                         <table class="table green-table">
                     <thead>

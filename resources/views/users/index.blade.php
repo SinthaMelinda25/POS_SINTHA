@@ -95,6 +95,10 @@
         vertical-align: middle;
     }
 
+    .green-table-users tbody td:first-child {
+        font-weight: 700;
+    }
+
     .role-badge {
         background-color: var(--green-pale);
         color: var(--green-darkest);
